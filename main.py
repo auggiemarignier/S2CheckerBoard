@@ -102,7 +102,9 @@ if args.save_alm:
     try:
         alm_hp = hp.map2alm(cboard, args.L - 1)
         alm = lm_hp2lm(alm_hp, args.L)
-        np.savetxt(f"outputs/checkerboardL{args.L}.txt", alm)
+        np.savetxt(
+            f"outputs/checkerboardL{args.L}.txt", alm.view(float).reshape((-1, 2))
+        )
     except NameError:
         raise NameError("Please specify a bandlimit with the --L option.")
 if args.save_img:
